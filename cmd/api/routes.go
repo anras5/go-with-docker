@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/anras5/go-with-docker/internal/handlers"
 	"github.com/go-chi/chi/v5"
 	"net/http"
 )
@@ -8,9 +9,7 @@ import (
 func routes() http.Handler {
 	mux := chi.NewRouter()
 
-	mux.Get("/", func(writer http.ResponseWriter, request *http.Request) {
-		_, _ = writer.Write([]byte("Hello from the browser!"))
-	})
+	mux.Get("/", handlers.Home)
 
 	return mux
 }
