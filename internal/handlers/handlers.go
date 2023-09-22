@@ -1,7 +1,7 @@
 package handlers
 
 import (
-	"encoding/json"
+	"github.com/anras5/go-with-docker/internal/config"
 	"net/http"
 )
 
@@ -16,11 +16,6 @@ func Home(w http.ResponseWriter, r *http.Request) {
 		Version: "1.0.1",
 	}
 
-	// marshal the data
-	out, _ := json.Marshal(payload)
-
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
-	_, _ = w.Write(out)
+	_ = config.WriteJSON(w, http.StatusOK, payload)
 
 }
